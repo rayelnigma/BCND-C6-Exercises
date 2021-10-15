@@ -54,8 +54,8 @@ contract('ExerciseC6A', async (accounts) => {
     console.log(4);
     await config.exerciseC6A.setIsOperational(false, { from: config.testAddresses[3] });
     console.log(5);
-    await config.exerciseC6A.setIsOperational(false, { from: config.testAddresses[4] });
-    console.log(6);
+    // await config.exerciseC6A.setIsOperational(false, { from: config.testAddresses[4] });
+    // console.log(6);
     await truffleAssert.reverts(config.exerciseC6A.registerUser(config.testAddresses[5], false, { from: caller }),
       'contract must be operational to continue');
     console.log(7);

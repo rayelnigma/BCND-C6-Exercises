@@ -16,7 +16,7 @@ contract ExerciseC6A {
     mapping(address => UserProfile) userProfiles;   // Mapping for storing user profiles
     bool public isOperational;
     address[] private multiSigAddresses;
-    uint public requiredSigCount;
+    uint constant public requiredSigCount = 3;
 
 
     /********************************************************************************************/
@@ -36,7 +36,6 @@ contract ExerciseC6A {
     {
         contractOwner = msg.sender;
         isOperational = true;
-        requiredSigCount = 3;
     }
 
     /********************************************************************************************/
@@ -110,17 +109,16 @@ contract ExerciseC6A {
     }
 
     function setIsOperational(bool isOperationalStatus) external requireAdmin {
-        if(isOperational != isOperationalStatus){
-            for (uint index = 0; index < multiSigAddresses.length; index = index + 1){
-                if(msg.sender == multiSigAddresses[index]){
-                    revert('this admin already voted');
-                }
+        require(isOperational != isOperationalStatus, "can't request mode change if mode is already in this state");
+        for (uint index = 0; index < multiSigAddresses.length; index++){
+            if(msg.sender == multiSigAddresses[index]){
+                revert('this admin already voted');
             }
-            multiSigAddresses.push(msg.sender);
-            if(multiSigAddresses.length >= requiredSigCount){
-                isOperational = isOperationalStatus;
-                delete multiSigAddresses;
-            }
+        }
+        multiSigAddresses.push(msg.sender);
+        if(multiSigAddresses.length >= requiredSigCount){
+            isOperational = isOperationalStatus;
+            delete multiSigAddresses;
         }
     }
 }
