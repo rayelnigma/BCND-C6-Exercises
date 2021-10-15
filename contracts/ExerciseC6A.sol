@@ -1,4 +1,4 @@
-pragma solidity ^0.4.25;
+pragma solidity 0.5.16;
 
 contract ExerciseC6A {
 
@@ -15,6 +15,8 @@ contract ExerciseC6A {
     address private contractOwner;                  // Account used to deploy contract
     mapping(address => UserProfile) userProfiles;   // Mapping for storing user profiles
     bool public isOperational;
+    address[] private multiSigAddresses;
+    uint public requiredSigCount;
 
 
     /********************************************************************************************/
@@ -34,6 +36,7 @@ contract ExerciseC6A {
     {
         contractOwner = msg.sender;
         isOperational = true;
+        requiredSigCount = 3;
     }
 
     /********************************************************************************************/
@@ -49,6 +52,12 @@ contract ExerciseC6A {
     modifier requireContractOwner()
     {
         require(msg.sender == contractOwner, "Caller is not contract owner");
+        _;
+    }
+
+    modifier requireAdmin(){
+        require(userProfiles[msg.sender].isRegistered, 'caller must be a registered user');
+        require(userProfiles[msg.sender].isAdmin, 'caller must be an admin');
         _;
     }
 
@@ -100,8 +109,19 @@ contract ExerciseC6A {
                                             });
     }
 
-    function setIsOperational(bool isOperationalStatus) external requireContractOwner {
-        isOperational = isOperationalStatus;
+    function setIsOperational(bool isOperationalStatus) external requireAdmin {
+        if(isOperational != isOperationalStatus){
+            for (uint index = 0; index < multiSigAddresses.length; index = index + 1){
+                if(msg.sender == multiSigAddresses[index]){
+                    revert('this admin already voted');
+                }
+            }
+            multiSigAddresses.push(msg.sender);
+            if(multiSigAddresses.length >= requiredSigCount){
+                isOperational = isOperationalStatus;
+                delete multiSigAddresses;
+            }
+        }
     }
 }
 

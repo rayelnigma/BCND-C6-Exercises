@@ -4,5 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"solidity.compileUsingRemoteVersion": "v0.5.16+commit.9c3226ce",
+		"solidity.compileUsingLocalVersion": "c:\\Users\\jerom\\source\\BCND-C6-Exercises\\soljson-v0.5.16+commit.9c3226ce.js",
+		"solidity.defaultCompiler": "localFile"
+	}
 }
