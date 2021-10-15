@@ -14,7 +14,7 @@ contract ExerciseC6A {
 
     address private contractOwner;                  // Account used to deploy contract
     mapping(address => UserProfile) userProfiles;   // Mapping for storing user profiles
-
+    bool public isOperational;
 
 
     /********************************************************************************************/
@@ -33,6 +33,7 @@ contract ExerciseC6A {
                                 public 
     {
         contractOwner = msg.sender;
+        isOperational = true;
     }
 
     /********************************************************************************************/
@@ -51,6 +52,11 @@ contract ExerciseC6A {
         _;
     }
 
+    modifier requireIsOperational(){
+        require(isOperational, "contract must be operational to continue");
+        _;
+    }
+
     /********************************************************************************************/
     /*                                       UTILITY FUNCTIONS                                  */
     /********************************************************************************************/
@@ -66,6 +72,7 @@ contract ExerciseC6A {
                             )
                             external
                             view
+                            requireIsOperational
                             returns(bool)
     {
         require(account != address(0), "'account' must be a valid address.");
@@ -80,8 +87,9 @@ contract ExerciseC6A {
                                 (
                                     address account,
                                     bool isAdmin
-                                )
+                                ) 
                                 external
+                                requireIsOperational
                                 requireContractOwner
     {
         require(!userProfiles[account].isRegistered, "User is already registered.");
@@ -90,6 +98,10 @@ contract ExerciseC6A {
                                                 isRegistered: true,
                                                 isAdmin: isAdmin
                                             });
+    }
+
+    function setIsOperational(bool isOperationalStatus) external requireContractOwner {
+        isOperational = isOperationalStatus;
     }
 }
 

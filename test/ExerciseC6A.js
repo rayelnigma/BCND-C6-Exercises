@@ -1,5 +1,6 @@
 
 var Test = require('../config/testConfig.js');
+const truffleAssert = require('truffle-assertions');
 
 contract('ExerciseC6A', async (accounts) => {
 
@@ -9,19 +10,28 @@ contract('ExerciseC6A', async (accounts) => {
   });
 
   it('contract owner can register new user', async () => {
-    
     // ARRANGE
     let caller = accounts[0]; // This should be config.owner or accounts[0] for registering a new user
-    let newUser = config.testAddresses[0]; 
+    let newUser = config.testAddresses[0];
 
     // ACT
-    await config.exerciseC6A.registerUser(newUser, false, {from: caller});
-    let result = await config.exerciseC6A.isUserRegistered.call(newUser); 
+    await config.exerciseC6A.registerUser(newUser, false, { from: caller });
+    let result = await config.exerciseC6A.isUserRegistered.call(newUser);
 
     // ASSERT
     assert.equal(result, true, "Contract owner cannot register new user");
-
   });
 
- 
+  it('contract can be paused', async () => {
+    // ARRANGE
+    let caller = accounts[0]; // This should be config.owner or accounts[0] for registering a new user
+    let newUser = config.testAddresses[0];
+
+    // ACT
+    await config.exerciseC6A.setIsOperational(false, { from: caller });
+    await truffleAssert.reverts(config.exerciseC6A.registerUser(newUser, false, { from: caller }),
+      'contract must be operational to continue');
+  });
+
+
 });
