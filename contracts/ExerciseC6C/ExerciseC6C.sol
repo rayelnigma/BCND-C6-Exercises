@@ -105,7 +105,7 @@ contract ExerciseC6C {
         string calldata id,
         uint256 sales,
         uint256 bonus
-    ) external requireContractOwner {
+    ) external {
         require(employees[id].isRegistered, "Employee is not registered.");
 
         employees[id].sales = employees[id].sales.add(sales);
