@@ -1,0 +1,1634 @@
+{
+    "contractName": "ExerciseC6A",
+    "abi": [
+        {
+            "inputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "isOperational",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                }
+            ],
+            "name": "isUserRegistered",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "isAdmin",
+                    "type": "bool"
+                }
+            ],
+            "name": "registerUser",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "internalType": "bool",
+                    "name": "mode",
+                    "type": "bool"
+                }
+            ],
+            "name": "setOperatingStatus",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOperational\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isUserRegistered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isAdmin\",\"type\":\"bool\"}],\"name\":\"registerUser\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bool\",\"name\":\"mode\",\"type\":\"bool\"}],\"name\":\"setOperatingStatus\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"constructor\":{\"details\":\"Constructor     The deploying account becomes contractOwner\"},\"isOperational()\":{\"details\":\"Get operating status of contract\",\"return\":\"A bool that is the current operating status\"},\"isUserRegistered(address)\":{\"details\":\"Check if a user is registered\",\"return\":\"A bool that indicates if the user is registered\"},\"setOperatingStatus(bool)\":{\"details\":\"Sets contract operations on/off    * When operational mode is disabled, all write transactions except for this one will fail\"}}},\"userdoc\":{\"methods\":{\"registerUser(address,bool)\":{\"notice\":\"*****************************************************************************************\"}}}},\"settings\":{\"compilationTarget\":{\"c:/Users/jerom/source/BCND-C6-Exercises/contracts/ExerciseC6A.sol\":\"ExerciseC6A\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"c:/Users/jerom/source/BCND-C6-Exercises/contracts/ExerciseC6A.sol\":{\"keccak256\":\"0x43847679a2e1a57779e4ff6b32727ac59c1200ab1b7484addf57a7ed5f76c1e0\",\"urls\":[\"bzz-raw://dd053955e1cd746a689ac46669305afd7c233bd9e379492868afab222456441d\",\"dweb:/ipfs/QmfDUC4RqWmXLsKBjdFqsLw4tEkQNni3r1Mvg7wAKd6ine\"]}},\"version\":1}",
+    "bytecode": "60806040526002805460ff1916600117905534801561001d57600080fd5b50600080546001600160a01b031916331790556103a28061003f6000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c8063110466ed14610051578063163f752214610072578063951faf00146100ac578063cd905dff146100da575b600080fd5b6100706004803603602081101561006757600080fd5b503515156100e2565b005b6100986004803603602081101561008857600080fd5b50356001600160a01b0316610154565b604080519115158252519081900360200190f35b610070600480360360408110156100c257600080fd5b506001600160a01b03813516906020013515156101ba565b61009861031d565b6000546001600160a01b03163314610141576040805162461bcd60e51b815260206004820152601c60248201527f43616c6c6572206973206e6f7420636f6e7472616374206f776e657200000000604482015290519081900360640190fd5b6002805460ff1916911515919091179055565b60006001600160a01b03821661019b5760405162461bcd60e51b81526004018080602001828103825260228152602001806103276022913960400191505060405180910390fd5b506001600160a01b031660009081526001602052604090205460ff1690565b60025460ff166101fb5760405162461bcd60e51b81526004018080602001828103825260258152602001806103496025913960400191505060405180910390fd5b6000546001600160a01b0316331461025a576040805162461bcd60e51b815260206004820152601c60248201527f43616c6c6572206973206e6f7420636f6e7472616374206f776e657200000000604482015290519081900360640190fd5b6001600160a01b03821660009081526001602052604090205460ff16156102c8576040805162461bcd60e51b815260206004820152601b60248201527f5573657220697320616c726561647920726567697374657265642e0000000000604482015290519081900360640190fd5b604080518082018252600180825292151560208083019182526001600160a01b03909516600090815293909452912090518154925115156101000261ff001991151560ff199094169390931716919091179055565b60025460ff169056fe276163636f756e7427206d75737420626520612076616c696420616464726573732e436f6e74726163742069732063757272656e746c79206e6f74206f7065726174696f6e616ca265627a7a723158207f1efc4fd170f20ce38cd6c03537197d4344f99a919dab055d7c00e1f9abf97764736f6c63430005100032",
+    "deployedBytecode": "608060405234801561001057600080fd5b506004361061004c5760003560e01c8063110466ed14610051578063163f752214610072578063951faf00146100ac578063cd905dff146100da575b600080fd5b6100706004803603602081101561006757600080fd5b503515156100e2565b005b6100986004803603602081101561008857600080fd5b50356001600160a01b0316610154565b604080519115158252519081900360200190f35b610070600480360360408110156100c257600080fd5b506001600160a01b03813516906020013515156101ba565b61009861031d565b6000546001600160a01b03163314610141576040805162461bcd60e51b815260206004820152601c60248201527f43616c6c6572206973206e6f7420636f6e7472616374206f776e657200000000604482015290519081900360640190fd5b6002805460ff1916911515919091179055565b60006001600160a01b03821661019b5760405162461bcd60e51b81526004018080602001828103825260228152602001806103276022913960400191505060405180910390fd5b506001600160a01b031660009081526001602052604090205460ff1690565b60025460ff166101fb5760405162461bcd60e51b81526004018080602001828103825260258152602001806103496025913960400191505060405180910390fd5b6000546001600160a01b0316331461025a576040805162461bcd60e51b815260206004820152601c60248201527f43616c6c6572206973206e6f7420636f6e7472616374206f776e657200000000604482015290519081900360640190fd5b6001600160a01b03821660009081526001602052604090205460ff16156102c8576040805162461bcd60e51b815260206004820152601b60248201527f5573657220697320616c726561647920726567697374657265642e0000000000604482015290519081900360640190fd5b604080518082018252600180825292151560208083019182526001600160a01b03909516600090815293909452912090518154925115156101000261ff001991151560ff199094169390931716919091179055565b60025460ff169056fe276163636f756e7427206d75737420626520612076616c696420616464726573732e436f6e74726163742069732063757272656e746c79206e6f74206f7065726174696f6e616ca265627a7a723158207f1efc4fd170f20ce38cd6c03537197d4344f99a919dab055d7c00e1f9abf97764736f6c63430005100032",
+    "sourceMap": "25:5004:0:-;;;634:31;;;-1:-1:-1;;634:31:0;661:4;634:31;;;1177:168;5:2:-1;;;;30:1;27;20:12;5:2;-1:-1;1312:13:0;:26;;-1:-1:-1;;;;;;1312:26:0;1328:10;1312:26;;;25:5004;;;;;;",
+    "deployedSourceMap": "25:5004:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:5004:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4760:266;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;4760:266:0;;;;:::i;:::-;;2923:386;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;2923:386:0;-1:-1:-1;;;;;2923:386:0;;:::i;:::-;;;;;;;;;;;;;;;;;;3926:663;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;;;;;;3926:663:0;;;;;;;;;;:::i;3444:178::-;;;:::i;4760:266::-;1968:13;;-1:-1:-1;;;;;1968:13:0;1954:10;:27;1946:68;;;;;-1:-1:-1;;;1946:68:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;4995:11;:18;;-1:-1:-1;;4995:18:0;;;;;;;;;;4760:266::o;2923:386::-;3163:4;-1:-1:-1;;;;;3191:21:0;;3183:68;;;;-1:-1:-1;;;3183:68:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;3268:21:0;;;;;:12;:21;;;;;:34;;;;2923:386::o;3926:663::-;2334:11;;;;2326:61;;;;-1:-1:-1;;;2326:61:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1968:13;;-1:-1:-1;;;;;1968:13:0;1954:10;:27;1946:68;;;;;-1:-1:-1;;;1946:68:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;4288:21:0;;;;;;:12;:21;;;;;:34;;;4287:35;4279:75;;;;;-1:-1:-1;;;4279:75:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;4389:193;;;;;;;;4465:4;4389:193;;;;;;;;;;;;;-1:-1:-1;;;;;4365:21:0;;;-1:-1:-1;4365:21:0;;;;;;;;;:217;;;;;;;;;;-1:-1:-1;;4365:217:0;;;-1:-1:-1;;4365:217:0;;;;;;;;;;;;;;3926:663::o;3444:178::-;3604:11;;;;3444:178;:::o",
+    "sourcePath": "c:/Users/jerom/source/BCND-C6-Exercises/contracts/ExerciseC6A.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.5.16+commit.9c3226ce"
+    },
+    "ast": {
+        "absolutePath": "c:/Users/jerom/source/BCND-C6-Exercises/contracts/ExerciseC6A.sol",
+        "exportedSymbols": {
+            "ExerciseC6A": [
+                121
+            ]
+        },
+        "id": 122,
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "0.5",
+                    ".16"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "0:23:0"
+            },
+            {
+                "baseContracts": [],
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "documentation": null,
+                "fullyImplemented": true,
+                "id": 121,
+                "linearizedBaseContracts": [
+                    121
+                ],
+                "name": "ExerciseC6A",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": true,
+                        "id": 4,
+                        "name": "M",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 121,
+                        "src": "351:19:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 2,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "351:4:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": {
+                            "argumentTypes": null,
+                            "hexValue": "32",
+                            "id": 3,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "369:1:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_rational_2_by_1",
+                                "typeString": "int_const 2"
+                            },
+                            "value": "2"
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "canonicalName": "ExerciseC6A.UserProfile",
+                        "id": 9,
+                        "members": [
+                            {
+                                "constant": false,
+                                "id": 6,
+                                "name": "isRegistered",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 9,
+                                "src": "405:17:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                },
+                                "typeName": {
+                                    "id": 5,
+                                    "name": "bool",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "405:4:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    }
+                                },
+                                "value": null,
+                                "visibility": "internal"
+                            },
+                            {
+                                "constant": false,
+                                "id": 8,
+                                "name": "isAdmin",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 9,
+                                "src": "432:12:0",
+                                "stateVariable": false,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                },
+                                "typeName": {
+                                    "id": 7,
+                                    "name": "bool",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "432:4:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    }
+                                },
+                                "value": null,
+                                "visibility": "internal"
+                            }
+                        ],
+                        "name": "UserProfile",
+                        "nodeType": "StructDefinition",
+                        "scope": 121,
+                        "src": "376:75:0",
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "id": 11,
+                        "name": "contractOwner",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 121,
+                        "src": "457:29:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                        },
+                        "typeName": {
+                            "id": 10,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "457:7:0",
+                            "stateMutability": "nonpayable",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            }
+                        },
+                        "value": null,
+                        "visibility": "private"
+                    },
+                    {
+                        "constant": false,
+                        "id": 15,
+                        "name": "userProfiles",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 121,
+                        "src": "544:44:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserProfile_$9_storage_$",
+                            "typeString": "mapping(address => struct ExerciseC6A.UserProfile)"
+                        },
+                        "typeName": {
+                            "id": 14,
+                            "keyType": {
+                                "id": 12,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "552:7:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "544:31:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserProfile_$9_storage_$",
+                                "typeString": "mapping(address => struct ExerciseC6A.UserProfile)"
+                            },
+                            "valueType": {
+                                "contractScope": null,
+                                "id": 13,
+                                "name": "UserProfile",
+                                "nodeType": "UserDefinedTypeName",
+                                "referencedDeclaration": 9,
+                                "src": "563:11:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_UserProfile_$9_storage_ptr",
+                                    "typeString": "struct ExerciseC6A.UserProfile"
+                                }
+                            }
+                        },
+                        "value": null,
+                        "visibility": "internal"
+                    },
+                    {
+                        "constant": false,
+                        "id": 18,
+                        "name": "operational",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 121,
+                        "src": "634:31:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                        },
+                        "typeName": {
+                            "id": 16,
+                            "name": "bool",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "634:4:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                            }
+                        },
+                        "value": {
+                            "argumentTypes": null,
+                            "hexValue": "74727565",
+                            "id": 17,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "bool",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "661:4:0",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                            },
+                            "value": "true"
+                        },
+                        "visibility": "private"
+                    },
+                    {
+                        "body": {
+                            "id": 26,
+                            "nodeType": "Block",
+                            "src": "1302:43:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 24,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 21,
+                                            "name": "contractOwner",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 11,
+                                            "src": "1312:13:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "expression": {
+                                                "argumentTypes": null,
+                                                "id": 22,
+                                                "name": "msg",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 10979,
+                                                "src": "1328:3:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_magic_message",
+                                                    "typeString": "msg"
+                                                }
+                                            },
+                                            "id": 23,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "sender",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": null,
+                                            "src": "1328:10:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address_payable",
+                                                "typeString": "address payable"
+                                            }
+                                        },
+                                        "src": "1312:26:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "id": 25,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1312:26:0"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Constructor\n     The deploying account becomes contractOwner",
+                        "id": 27,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 19,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1221:35:0"
+                        },
+                        "returnParameters": {
+                            "id": 20,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1302:0:0"
+                        },
+                        "scope": 121,
+                        "src": "1177:168:0",
+                        "stateMutability": "nonpayable",
+                        "superFunction": null,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 38,
+                            "nodeType": "Block",
+                            "src": "1936:96:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "arguments": [
+                                            {
+                                                "argumentTypes": null,
+                                                "commonType": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                "id": 33,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "argumentTypes": null,
+                                                    "expression": {
+                                                        "argumentTypes": null,
+                                                        "id": 30,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 10979,
+                                                        "src": "1954:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 31,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "sender",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": null,
+                                                    "src": "1954:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address_payable",
+                                                        "typeString": "address payable"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 32,
+                                                    "name": "contractOwner",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 11,
+                                                    "src": "1968:13:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "src": "1954:27:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "argumentTypes": null,
+                                                "hexValue": "43616c6c6572206973206e6f7420636f6e7472616374206f776e6572",
+                                                "id": 34,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1983:30:0",
+                                                "subdenomination": null,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_ad5b8255218fc9200bf271049bc5472a1a7a8192290eba60272e432e608ceea3",
+                                                    "typeString": "literal_string \"Caller is not contract owner\""
+                                                },
+                                                "value": "Caller is not contract owner"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_ad5b8255218fc9200bf271049bc5472a1a7a8192290eba60272e432e608ceea3",
+                                                    "typeString": "literal_string \"Caller is not contract owner\""
+                                                }
+                                            ],
+                                            "id": 29,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                10982,
+                                                10983
+                                            ],
+                                            "referencedDeclaration": 10983,
+                                            "src": "1946:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 35,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1946:68:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 36,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1946:68:0"
+                                },
+                                {
+                                    "id": 37,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "2024:1:0"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Modifier that requires the \"ContractOwner\" account to be the function caller",
+                        "id": 39,
+                        "name": "requireContractOwner",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 28,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1929:2:0"
+                        },
+                        "src": "1900:132:0",
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 47,
+                            "nodeType": "Block",
+                            "src": "2316:176:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "arguments": [
+                                            {
+                                                "argumentTypes": null,
+                                                "id": 42,
+                                                "name": "operational",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 18,
+                                                "src": "2334:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "argumentTypes": null,
+                                                "hexValue": "436f6e74726163742069732063757272656e746c79206e6f74206f7065726174696f6e616c",
+                                                "id": 43,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "2347:39:0",
+                                                "subdenomination": null,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_a944ac63656791076c14949470b85bdffa60627db8794c94b1d70a12e2e21886",
+                                                    "typeString": "literal_string \"Contract is currently not operational\""
+                                                },
+                                                "value": "Contract is currently not operational"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_a944ac63656791076c14949470b85bdffa60627db8794c94b1d70a12e2e21886",
+                                                    "typeString": "literal_string \"Contract is currently not operational\""
+                                                }
+                                            ],
+                                            "id": 41,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                10982,
+                                                10983
+                                            ],
+                                            "referencedDeclaration": 10983,
+                                            "src": "2326:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 44,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "2326:61:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 45,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "2326:61:0"
+                                },
+                                {
+                                    "id": 46,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "2397:1:0"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Modifier that requires the \"operational\" boolean variable to be \"true\"\n     This is used on all state changing functions to pause the contract in \n     the event there is an issue that needs to be fixed",
+                        "id": 48,
+                        "name": "requireIsOperational",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 40,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2308:2:0"
+                        },
+                        "src": "2279:213:0",
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 69,
+                            "nodeType": "Block",
+                            "src": "3173:136:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "arguments": [
+                                            {
+                                                "argumentTypes": null,
+                                                "commonType": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                "id": 60,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "argumentTypes": null,
+                                                    "id": 56,
+                                                    "name": "account",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 50,
+                                                    "src": "3191:7:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "!=",
+                                                "rightExpression": {
+                                                    "argumentTypes": null,
+                                                    "arguments": [
+                                                        {
+                                                            "argumentTypes": null,
+                                                            "hexValue": "30",
+                                                            "id": 58,
+                                                            "isConstant": false,
+                                                            "isLValue": false,
+                                                            "isPure": true,
+                                                            "kind": "number",
+                                                            "lValueRequested": false,
+                                                            "nodeType": "Literal",
+                                                            "src": "3210:1:0",
+                                                            "subdenomination": null,
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_rational_0_by_1",
+                                                                "typeString": "int_const 0"
+                                                            },
+                                                            "value": "0"
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_rational_0_by_1",
+                                                                "typeString": "int_const 0"
+                                                            }
+                                                        ],
+                                                        "id": 57,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": true,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "ElementaryTypeNameExpression",
+                                                        "src": "3202:7:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_address_$",
+                                                            "typeString": "type(address)"
+                                                        },
+                                                        "typeName": "address"
+                                                    },
+                                                    "id": 59,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "typeConversion",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "3202:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address_payable",
+                                                        "typeString": "address payable"
+                                                    }
+                                                },
+                                                "src": "3191:21:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "argumentTypes": null,
+                                                "hexValue": "276163636f756e7427206d75737420626520612076616c696420616464726573732e",
+                                                "id": 61,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "3214:36:0",
+                                                "subdenomination": null,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_677bc2b84b08bc35c3be4a8328747ec8a6c96e82c29d43fe16f6f837ccff6d11",
+                                                    "typeString": "literal_string \"'account' must be a valid address.\""
+                                                },
+                                                "value": "'account' must be a valid address."
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_677bc2b84b08bc35c3be4a8328747ec8a6c96e82c29d43fe16f6f837ccff6d11",
+                                                    "typeString": "literal_string \"'account' must be a valid address.\""
+                                                }
+                                            ],
+                                            "id": 55,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                10982,
+                                                10983
+                                            ],
+                                            "referencedDeclaration": 10983,
+                                            "src": "3183:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 62,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "3183:68:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 63,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "3183:68:0"
+                                },
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "expression": {
+                                            "argumentTypes": null,
+                                            "baseExpression": {
+                                                "argumentTypes": null,
+                                                "id": 64,
+                                                "name": "userProfiles",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 15,
+                                                "src": "3268:12:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserProfile_$9_storage_$",
+                                                    "typeString": "mapping(address => struct ExerciseC6A.UserProfile storage ref)"
+                                                }
+                                            },
+                                            "id": 66,
+                                            "indexExpression": {
+                                                "argumentTypes": null,
+                                                "id": 65,
+                                                "name": "account",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 50,
+                                                "src": "3281:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "nodeType": "IndexAccess",
+                                            "src": "3268:21:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_UserProfile_$9_storage",
+                                                "typeString": "struct ExerciseC6A.UserProfile storage ref"
+                                            }
+                                        },
+                                        "id": 67,
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "memberName": "isRegistered",
+                                        "nodeType": "MemberAccess",
+                                        "referencedDeclaration": 6,
+                                        "src": "3268:34:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "functionReturnParameters": 54,
+                                    "id": 68,
+                                    "nodeType": "Return",
+                                    "src": "3261:41:0"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Check if a user is registered\n    * @return A bool that indicates if the user is registered",
+                        "id": 70,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "isUserRegistered",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 51,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 50,
+                                    "name": "account",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 70,
+                                    "src": "3011:15:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 49,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3011:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2977:79:0"
+                        },
+                        "returnParameters": {
+                            "id": 54,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 53,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 70,
+                                    "src": "3163:4:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 52,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3163:4:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3162:6:0"
+                        },
+                        "scope": 121,
+                        "src": "2923:386:0",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": {
+                            "id": 77,
+                            "nodeType": "Block",
+                            "src": "3587:35:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 75,
+                                        "name": "operational",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 18,
+                                        "src": "3604:11:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "functionReturnParameters": 74,
+                                    "id": 76,
+                                    "nodeType": "Return",
+                                    "src": "3597:18:0"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Get operating status of contract\n    * @return A bool that is the current operating status",
+                        "id": 78,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "isOperational",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 71,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "3466:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 74,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 73,
+                                    "name": "",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 78,
+                                    "src": "3576:4:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 72,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "3576:4:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3575:6:0"
+                        },
+                        "scope": 121,
+                        "src": "3444:178:0",
+                        "stateMutability": "view",
+                        "superFunction": null,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 107,
+                            "nodeType": "Block",
+                            "src": "4269:320:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "arguments": [
+                                            {
+                                                "argumentTypes": null,
+                                                "id": 94,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "nodeType": "UnaryOperation",
+                                                "operator": "!",
+                                                "prefix": true,
+                                                "src": "4287:35:0",
+                                                "subExpression": {
+                                                    "argumentTypes": null,
+                                                    "expression": {
+                                                        "argumentTypes": null,
+                                                        "baseExpression": {
+                                                            "argumentTypes": null,
+                                                            "id": 90,
+                                                            "name": "userProfiles",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 15,
+                                                            "src": "4288:12:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserProfile_$9_storage_$",
+                                                                "typeString": "mapping(address => struct ExerciseC6A.UserProfile storage ref)"
+                                                            }
+                                                        },
+                                                        "id": 92,
+                                                        "indexExpression": {
+                                                            "argumentTypes": null,
+                                                            "id": 91,
+                                                            "name": "account",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 80,
+                                                            "src": "4301:7:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_address",
+                                                                "typeString": "address"
+                                                            }
+                                                        },
+                                                        "isConstant": false,
+                                                        "isLValue": true,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "IndexAccess",
+                                                        "src": "4288:21:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_struct$_UserProfile_$9_storage",
+                                                            "typeString": "struct ExerciseC6A.UserProfile storage ref"
+                                                        }
+                                                    },
+                                                    "id": 93,
+                                                    "isConstant": false,
+                                                    "isLValue": true,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "isRegistered",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 6,
+                                                    "src": "4288:34:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    }
+                                                },
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "argumentTypes": null,
+                                                "hexValue": "5573657220697320616c726561647920726567697374657265642e",
+                                                "id": 95,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "4324:29:0",
+                                                "subdenomination": null,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_af9f76442a48010ec56e68cc080311e3f26b563f7794b6a572ed9ed27d58a492",
+                                                    "typeString": "literal_string \"User is already registered.\""
+                                                },
+                                                "value": "User is already registered."
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_af9f76442a48010ec56e68cc080311e3f26b563f7794b6a572ed9ed27d58a492",
+                                                    "typeString": "literal_string \"User is already registered.\""
+                                                }
+                                            ],
+                                            "id": 89,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                10982,
+                                                10983
+                                            ],
+                                            "referencedDeclaration": 10983,
+                                            "src": "4279:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 96,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "4279:75:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 97,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4279:75:0"
+                                },
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 105,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "baseExpression": {
+                                                "argumentTypes": null,
+                                                "id": 98,
+                                                "name": "userProfiles",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 15,
+                                                "src": "4365:12:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserProfile_$9_storage_$",
+                                                    "typeString": "mapping(address => struct ExerciseC6A.UserProfile storage ref)"
+                                                }
+                                            },
+                                            "id": 100,
+                                            "indexExpression": {
+                                                "argumentTypes": null,
+                                                "id": 99,
+                                                "name": "account",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 80,
+                                                "src": "4378:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "4365:21:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_UserProfile_$9_storage",
+                                                "typeString": "struct ExerciseC6A.UserProfile storage ref"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "arguments": [
+                                                {
+                                                    "argumentTypes": null,
+                                                    "hexValue": "74727565",
+                                                    "id": 102,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "bool",
+                                                    "lValueRequested": false,
+                                                    "nodeType": "Literal",
+                                                    "src": "4465:4:0",
+                                                    "subdenomination": null,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    },
+                                                    "value": "true"
+                                                },
+                                                {
+                                                    "argumentTypes": null,
+                                                    "id": 103,
+                                                    "name": "isAdmin",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 82,
+                                                    "src": "4528:7:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    },
+                                                    {
+                                                        "typeIdentifier": "t_bool",
+                                                        "typeString": "bool"
+                                                    }
+                                                ],
+                                                "id": 101,
+                                                "name": "UserProfile",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 9,
+                                                "src": "4389:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_struct$_UserProfile_$9_storage_ptr_$",
+                                                    "typeString": "type(struct ExerciseC6A.UserProfile storage pointer)"
+                                                }
+                                            },
+                                            "id": 104,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "structConstructorCall",
+                                            "lValueRequested": false,
+                                            "names": [
+                                                "isRegistered",
+                                                "isAdmin"
+                                            ],
+                                            "nodeType": "FunctionCall",
+                                            "src": "4389:193:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_UserProfile_$9_memory",
+                                                "typeString": "struct ExerciseC6A.UserProfile memory"
+                                            }
+                                        },
+                                        "src": "4365:217:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_UserProfile_$9_storage",
+                                            "typeString": "struct ExerciseC6A.UserProfile storage ref"
+                                        }
+                                    },
+                                    "id": 106,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4365:217:0"
+                                }
+                            ]
+                        },
+                        "documentation": "*****************************************************************************************",
+                        "id": 108,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [
+                            {
+                                "arguments": null,
+                                "id": 85,
+                                "modifierName": {
+                                    "argumentTypes": null,
+                                    "id": 84,
+                                    "name": "requireIsOperational",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 48,
+                                    "src": "4191:20:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_modifier$__$",
+                                        "typeString": "modifier ()"
+                                    }
+                                },
+                                "nodeType": "ModifierInvocation",
+                                "src": "4191:20:0"
+                            },
+                            {
+                                "arguments": null,
+                                "id": 87,
+                                "modifierName": {
+                                    "argumentTypes": null,
+                                    "id": 86,
+                                    "name": "requireContractOwner",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 39,
+                                    "src": "4244:20:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_modifier$__$",
+                                        "typeString": "modifier ()"
+                                    }
+                                },
+                                "nodeType": "ModifierInvocation",
+                                "src": "4244:20:0"
+                            }
+                        ],
+                        "name": "registerUser",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 83,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 80,
+                                    "name": "account",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 108,
+                                    "src": "4018:15:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 79,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "4018:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 82,
+                                    "name": "isAdmin",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 108,
+                                    "src": "4071:12:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 81,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "4071:4:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "3980:137:0"
+                        },
+                        "returnParameters": {
+                            "id": 88,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "4269:0:0"
+                        },
+                        "scope": 121,
+                        "src": "3926:663:0",
+                        "stateMutability": "nonpayable",
+                        "superFunction": null,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": {
+                            "id": 119,
+                            "nodeType": "Block",
+                            "src": "4981:45:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "argumentTypes": null,
+                                        "id": 117,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 115,
+                                            "name": "operational",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 18,
+                                            "src": "4995:11:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bool",
+                                                "typeString": "bool"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "argumentTypes": null,
+                                            "id": 116,
+                                            "name": "mode",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 110,
+                                            "src": "5009:4:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bool",
+                                                "typeString": "bool"
+                                            }
+                                        },
+                                        "src": "4995:18:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "id": 118,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "4995:18:0"
+                                }
+                            ]
+                        },
+                        "documentation": "@dev Sets contract operations on/off\n    * When operational mode is disabled, all write transactions except for this one will fail",
+                        "id": 120,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [
+                            {
+                                "arguments": null,
+                                "id": 113,
+                                "modifierName": {
+                                    "argumentTypes": null,
+                                    "id": 112,
+                                    "name": "requireContractOwner",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 39,
+                                    "src": "4956:20:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_modifier$__$",
+                                        "typeString": "modifier ()"
+                                    }
+                                },
+                                "nodeType": "ModifierInvocation",
+                                "src": "4956:20:0"
+                            }
+                        ],
+                        "name": "setOperatingStatus",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 111,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 110,
+                                    "name": "mode",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 120,
+                                    "src": "4850:9:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 109,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "4850:4:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "value": null,
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "4816:73:0"
+                        },
+                        "returnParameters": {
+                            "id": 114,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "4981:0:0"
+                        },
+                        "scope": 121,
+                        "src": "4760:266:0",
+                        "stateMutability": "nonpayable",
+                        "superFunction": null,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 122,
+                "src": "25:5004:0"
+            }
+        ],
+        "src": "0:5031:0"
+    },
+    "functionHashes": {
+        "isOperational()": "cd905dff",
+        "isUserRegistered(address)": "163f7522",
+        "registerUser(address,bool)": "951faf00",
+        "setOperatingStatus(bool)": "110466ed"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "186000",
+            "executionCost": "41891",
+            "totalCost": "227891"
+        },
+        "external": {
+            "isOperational()": "1054",
+            "isUserRegistered(address)": "infinite",
+            "registerUser(address,bool)": "infinite",
+            "setOperatingStatus(bool)": "21849"
+        }
+    }
+}
