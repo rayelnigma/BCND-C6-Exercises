@@ -41,7 +41,7 @@
         "id": 124,
         "nodeType": "ImportDirective",
         "scope": 152,
-        "sourceUnit": 614,
+        "sourceUnit": 656,
         "src": "315:75:1",
         "symbolAliases": [],
         "unitAlias": ""
@@ -66,10 +66,10 @@
               "id": 125,
               "name": "SafeMath",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 613,
+              "referencedDeclaration": 655,
               "src": "426:8:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SafeMath_$613",
+                "typeIdentifier": "t_contract$_SafeMath_$655",
                 "typeString": "library SafeMath"
               }
             },
@@ -150,7 +150,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 628,
+                        "referencedDeclaration": 670,
                         "src": "1045:3:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -237,7 +237,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 628,
+                            "referencedDeclaration": 670,
                             "src": "1674:3:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -313,10 +313,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        631,
-                        632
+                        673,
+                        674
                       ],
-                      "referencedDeclaration": 632,
+                      "referencedDeclaration": 674,
                       "src": "1666:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -392,7 +392,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 614,
+          "SourceUnit": 656,
           "absolutePath": "project:/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
           "file": "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
           "scope": 152,
@@ -429,7 +429,7 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "SafeMath",
-                  "referencedDeclaration": 613,
+                  "referencedDeclaration": 655,
                   "type": "library SafeMath"
                 },
                 "id": 125,
@@ -562,7 +562,7 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 628,
+                                  "referencedDeclaration": 670,
                                   "type": "msg",
                                   "value": "msg"
                                 },
@@ -645,10 +645,10 @@
                                 }
                               ],
                               "overloadedDeclarations": [
-                                631,
-                                632
+                                673,
+                                674
                               ],
-                              "referencedDeclaration": 632,
+                              "referencedDeclaration": 674,
                               "type": "function (bool,string memory) pure",
                               "value": "require"
                             },
@@ -689,7 +689,7 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 628,
+                                      "referencedDeclaration": 670,
                                       "type": "msg",
                                       "value": "msg"
                                     },
@@ -779,7 +779,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-10-21T18:11:46.595Z",
+  "updatedAt": "2021-10-21T18:31:04.577Z",
   "devdoc": {
     "methods": {}
   },

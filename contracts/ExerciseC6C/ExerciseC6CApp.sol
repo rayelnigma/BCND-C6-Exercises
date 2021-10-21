@@ -19,4 +19,32 @@ contract ExerciseC6CApp {
     constructor() public {
         contractOwner = msg.sender;
     }
+
+    function calculateBonus(uint256 sales)
+        internal
+        view
+        requireContractOwner
+        returns (uint256)
+    {
+        if (sales < 100) {
+            return sales.mul(5).div(100);
+        } else if (sales < 500) {
+            return sales.mul(7).div(100);
+        } else {
+            return sales.mul(10).div(100);
+        }
+    }
+
+    function addSale(string calldata id, uint256 amount)
+        external
+        requireContractOwner
+    {
+        updateEmployee(id, amount, calculateBonus(amount));
+    }
+
+    function updateEmployee(
+        string memory id,
+        uint256 sales,
+        uint256 bonus
+    ) internal requireContractOwner {}
 }
