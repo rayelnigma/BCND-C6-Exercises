@@ -25,7 +25,7 @@ var Config = async function (accounts) {
     let exerciseC6A = await ExerciseC6A.new();
     let exerciseC6B = await ExerciseC6B.new();
     let exerciseC6C = await ExerciseC6C.new();
-    let exerciseC6CApp = await ExerciseC6CApp.new();
+    let exerciseC6CApp = await ExerciseC6CApp.new(exerciseC6C.address);
 
     return {
         owner: owner,

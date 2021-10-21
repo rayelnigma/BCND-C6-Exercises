@@ -1,6 +1,7 @@
 
 var Test = require('../config/testConfig.js');
-var BigNumber = require('bignumber.js');
+var BigNumber = require('../node_modules/bignumber');
+
 
 contract('ExerciseC6B', async (accounts) => {
 
@@ -10,9 +11,9 @@ contract('ExerciseC6B', async (accounts) => {
   });
 
   it('contract owner has 1,000,000 AWSM tokens', async () => {
-    
+
     // ARRANGE
-    let caller = accounts[0]; 
+    let caller = accounts[0];
 
     // ACT
     let result = await config.exerciseC6B.balanceOf.call(caller);
@@ -23,5 +24,5 @@ contract('ExerciseC6B', async (accounts) => {
   });
 
 
- 
+
 });
