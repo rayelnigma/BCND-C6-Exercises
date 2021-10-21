@@ -102,10 +102,10 @@ contract ExerciseC6C {
     }
 
     function updateEmployee(
-        string memory id,
+        string calldata id,
         uint256 sales,
         uint256 bonus
-    ) internal requireContractOwner {
+    ) external requireContractOwner {
         require(employees[id].isRegistered, "Employee is not registered.");
 
         employees[id].sales = employees[id].sales.add(sales);

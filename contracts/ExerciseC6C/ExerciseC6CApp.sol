@@ -10,14 +10,16 @@ contract ExerciseC6CApp {
     using SafeMath for uint256; // Allow SafeMath functions to be called for all uint256 types (similar to "prototype" in Javascript)
 
     address private contractOwner; // Account used to deploy contract
+    IExerciseC6CData dataContract;
 
     modifier requireContractOwner() {
         require(msg.sender == contractOwner, "Caller is not contract owner");
         _;
     }
 
-    constructor() public {
+    constructor(address _dataContract) public {
         contractOwner = msg.sender;
+        dataContract = IExerciseC6CData(_dataContract);
     }
 
     function calculateBonus(uint256 sales)
@@ -39,12 +41,14 @@ contract ExerciseC6CApp {
         external
         requireContractOwner
     {
-        updateEmployee(id, amount, calculateBonus(amount));
+        dataContract.updateEmployee(id, amount, calculateBonus(amount));
     }
+}
 
+interface IExerciseC6CData {
     function updateEmployee(
-        string memory id,
+        string calldata id,
         uint256 sales,
         uint256 bonus
-    ) internal requireContractOwner {}
+    ) external;
 }
