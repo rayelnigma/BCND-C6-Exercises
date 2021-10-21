@@ -22,6 +22,8 @@ contract ExerciseC6C {
         address wallet;
     }
 
+    mapping(address => uint256) private authorizedContracts;
+
     address private contractOwner; // Account used to deploy contract
     mapping(string => Profile) employees; // Mapping for storing employees
 
@@ -51,6 +53,14 @@ contract ExerciseC6C {
      */
     modifier requireContractOwner() {
         require(msg.sender == contractOwner, "Caller is not contract owner");
+        _;
+    }
+
+    modifier isCallerAuthorized() {
+        require(
+            authorizedContracts[msg.sender] == 1,
+            "caller is not authorized"
+        );
         _;
     }
 
@@ -105,10 +115,24 @@ contract ExerciseC6C {
         string calldata id,
         uint256 sales,
         uint256 bonus
-    ) external {
+    ) external isCallerAuthorized {
         require(employees[id].isRegistered, "Employee is not registered.");
 
         employees[id].sales = employees[id].sales.add(sales);
         employees[id].bonus = employees[id].bonus.add(bonus);
+    }
+
+    function authorizeContract(address _authorized)
+        public
+        requireContractOwner
+    {
+        authorizedContracts[_authorized] = 1;
+    }
+
+    function deauthorizeContract(address _deauthorized)
+        public
+        requireContractOwner
+    {
+        delete authorizedContracts[_deauthorized];
     }
 }
