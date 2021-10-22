@@ -80,11 +80,16 @@ contract ExerciseC6D {
     // Register an oracle with the contract
     function registerOracle() external payable {
         // CODE EXERCISE 1: Require registration fee
-        /* Enter code here */
+        require(
+            msg.value >= REGISTRATION_FEE,
+            "minimum required registration fee not provided"
+        );
+
         // CODE EXERCISE 1: Generate three random indexes (range 0-9) using generateIndexes for the calling oracle
-        /* Enter code here */
+        uint8[3] memory indexArray = generateIndexes(msg.sender);
+
         // CODE EXERCISE 1: Assign the indexes to the oracle and save to the contract state
-        /* Enter code here */
+        oracles[msg.sender] = indexArray;
     }
 
     function getOracle(address account)
