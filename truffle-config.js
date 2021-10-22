@@ -5,13 +5,20 @@ var mnemonic = "august apple property canoe anxiety weird concert identify vague
 
 module.exports = {
   networks: {
+    //   development: {
+    //     provider: function () {
+    //       return new HDWalletProvider(mnemonic, "wss://127.0.0.1:7545/", 0, 10);
+    //     },
+    //     network_id: '*'
+    //     // ,
+    //     // gas: 9999999
+    //   }
+    // },
     development: {
-      provider: function () {
-        return new HDWalletProvider(mnemonic, "http://127.0.0.1:7545/", 0, 10);
-      },
-      network_id: '*'
-      // ,
-      // gas: 9999999
+      host: "127.0.0.1",     // Localhost (default: none)
+      port: 7545,            // Standard Ethereum port (default: none)
+      network_id: "*",       // Any network (default: none)
+      websockets: true,
     }
   },
   compilers: {

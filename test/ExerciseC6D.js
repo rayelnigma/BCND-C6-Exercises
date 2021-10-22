@@ -3,22 +3,21 @@ var Test = require('../config/testConfig.js');
 
 contract('ExerciseC6D', async (accounts) => {
 
-  const TEST_ORACLES_COUNT = 20;
+  const TEST_ORACLES_COUNT = 5;
   var config;
   before('setup contract', async () => {
     config = await Test.Config(accounts);
 
     // Watch contract events
     const ON_TIME = 10;
-    let events = config.exerciseC6D.allEvents();
-    events.watch((error, result) => {
+    // console.log(config.exerciseC6D);
+    config.exerciseC6D.allEvents(null, (error, event) => {
       if (result.event === 'OracleRequest') {
-        console.log(`\n\nOracle Requested: index: ${result.args.index.toNumber()}, flight:  ${result.args.flight}, timestamp: ${result.args.timestamp.toNumber()}`);
+        console.log(`\n\n!!!!!!!!!!!!!!!! Oracle Requested: index: ${result.args.index.toNumber()}, flight:  ${result.args.flight}, timestamp: ${result.args.timestamp.toNumber()}`);
       } else {
-        console.log(`\n\nFlight Status Available: flight: ${result.args.flight}, timestamp: ${result.args.timestamp.toNumber()}, status: ${result.args.status.toNumber() == ON_TIME ? 'ON TIME' : 'DELAYED'}, verified: ${result.args.verified ? 'VERIFIED' : 'UNVERIFIED'}`);
+        console.log(`\n\n!!!!!!!!!!!!!!!! Flight Status Available: flight: ${result.args.flight}, timestamp: ${result.args.timestamp.toNumber()}, status: ${result.args.status.toNumber() == ON_TIME ? 'ON TIME' : 'DELAYED'}, verified: ${result.args.verified ? 'VERIFIED' : 'UNVERIFIED'}`);
       }
     });
-
     // Past events
     //events.get((error, logs) => {  });
 
@@ -29,10 +28,13 @@ contract('ExerciseC6D', async (accounts) => {
 
     // ARRANGE
     let fee = await config.exerciseC6D.REGISTRATION_FEE.call();
+    console.log('fee: ' + fee);
 
     // ACT
     for (let a = 1; a < TEST_ORACLES_COUNT; a++) {
       await config.exerciseC6D.registerOracle({ from: accounts[a], value: fee });
+      let result = await config.exerciseC6D.getOracle(accounts[a]);
+      console.log(`oracle registered[${a}]: ${result[0]}, ${result[1]}, ${result[2]}`);
     }
   });
 
@@ -67,20 +69,14 @@ contract('ExerciseC6D', async (accounts) => {
           // Check to see if flight status is available
           // Only useful while debugging since flight status is not hydrated until a 
           // required threshold of oracles submit a response
-          //let flightStatus = await config.exerciseC6D.viewFlightStatus(flight, timestamp);
-          //console.log('\nPost', idx, oracleIndexes[idx].toNumber(), flight, timestamp, flightStatus);
+          let flightStatus = await config.exerciseC6D.viewFlightStatus(flight, timestamp);
+          console.log('\nPOST:', idx, oracleIndexes[idx].toNumber(), flight, timestamp, flightStatus.toNumber());
         }
         catch (e) {
           // Enable this when debugging
-          // console.log('\nError', idx, oracleIndexes[idx].toNumber(), flight, timestamp);
+          console.log('\nERROR:', idx, oracleIndexes[idx].toNumber(), flight, timestamp);
         }
-
       }
     }
-
-
   });
-
-
-
 });
