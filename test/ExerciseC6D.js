@@ -11,13 +11,13 @@ contract('ExerciseC6D', async (accounts) => {
     // Watch contract events
     const ON_TIME = 10;
     // console.log(config.exerciseC6D);
-    config.exerciseC6D.allEvents(null, (error, event) => {
-      if (result.event === 'OracleRequest') {
-        console.log(`\n\n!!!!!!!!!!!!!!!! Oracle Requested: index: ${result.args.index.toNumber()}, flight:  ${result.args.flight}, timestamp: ${result.args.timestamp.toNumber()}`);
-      } else {
-        console.log(`\n\n!!!!!!!!!!!!!!!! Flight Status Available: flight: ${result.args.flight}, timestamp: ${result.args.timestamp.toNumber()}, status: ${result.args.status.toNumber() == ON_TIME ? 'ON TIME' : 'DELAYED'}, verified: ${result.args.verified ? 'VERIFIED' : 'UNVERIFIED'}`);
-      }
-    });
+    // config.exerciseC6D.allEvents(null, (error, event) => {
+    //   if (result.event === 'OracleRequest') {
+    //     console.log(`\n\n!!!!!!!!!!!!!!!! Oracle Requested: index: ${result.args.index.toNumber()}, flight:  ${result.args.flight}, timestamp: ${result.args.timestamp.toNumber()}`);
+    //   } else {
+    //     console.log(`\n\n!!!!!!!!!!!!!!!! Flight Status Available: flight: ${result.args.flight}, timestamp: ${result.args.timestamp.toNumber()}, status: ${result.args.status.toNumber() == ON_TIME ? 'ON TIME' : 'DELAYED'}, verified: ${result.args.verified ? 'VERIFIED' : 'UNVERIFIED'}`);
+    //   }
+    // });
     // Past events
     //events.get((error, logs) => {  });
 

@@ -10,7 +10,7 @@
   "scripts": {
     "test": "truffle test test/ExerciseC6D.js",
     "truffle-version": "truffle version",
-    "ganache": "ganache-cli -p 7545 -i 5777 -v -m \"august apple property canoe anxiety weird concert identify vague kiss milk rocket\""
+    "ganache": "ganache-cli -p 7545 -i 5777 -m \"august apple property canoe anxiety weird concert identify vague kiss milk rocket\""
   },
   "author": "Nik Kalyani <nik@kalyani.com> https://www.kalyani.com",
   "devDependencies": {
