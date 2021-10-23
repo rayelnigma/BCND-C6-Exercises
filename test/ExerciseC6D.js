@@ -65,16 +65,16 @@ contract('ExerciseC6D', async (accounts) => {
         try {
           // Submit a response...it will only be accepted if there is an Index match
           await config.exerciseC6D.submitOracleResponse(oracleIndexes[idx], flight, timestamp, 10, { from: accounts[a] });
-
+          console.log(`submitOracleResponse: ${oracleIndexes[idx]}, ${flight}, ${timestamp}, 10, from: ${accounts[a]}`);
           // Check to see if flight status is available
           // Only useful while debugging since flight status is not hydrated until a 
           // required threshold of oracles submit a response
           let flightStatus = await config.exerciseC6D.viewFlightStatus(flight, timestamp);
-          console.log('\nPOST:', idx, oracleIndexes[idx].toNumber(), flight, timestamp, flightStatus.toNumber());
+          console.log('POST:', idx, oracleIndexes[idx].toNumber(), flight, timestamp, flightStatus.toNumber());
         }
         catch (e) {
           // Enable this when debugging
-          console.log('\nERROR:', idx, oracleIndexes[idx].toNumber(), flight, timestamp);
+          console.log('ERROR:', idx, oracleIndexes[idx].toNumber(), flight, timestamp);
         }
       }
     }

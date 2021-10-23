@@ -49,6 +49,8 @@ contract ExerciseC6D {
         bool verified
     );
 
+    event logMessage(string message);
+
     // Flight data persisted forever
     struct FlightStatus {
         bool hasStatus;
@@ -79,6 +81,7 @@ contract ExerciseC6D {
 
     // Register an oracle with the contract
     function registerOracle() external payable {
+        emit logMessage("registerOracle() begin");
         // CODE EXERCISE 1: Require registration fee
         require(
             msg.value >= REGISTRATION_FEE,
@@ -90,6 +93,7 @@ contract ExerciseC6D {
 
         // CODE EXERCISE 1: Assign the indexes to the oracle and save to the contract state
         oracles[msg.sender] = indexArray;
+        emit logMessage("registerOracle() end");
     }
 
     function getOracle(address account)
@@ -117,6 +121,7 @@ contract ExerciseC6D {
         external
     {
         // Generate a number between 0 - 9 to determine which oracles may respond
+        emit logMessage("fetchFlightStatus() begin");
 
         // CODE EXERCISE 2: Replace the hard-coded value of index with a random index based on the calling account
         uint8 index = getRandomIndex(msg.sender);
@@ -158,6 +163,7 @@ contract ExerciseC6D {
         uint256 timestamp,
         uint8 statusId
     ) external validOracleIndex(index) {
+        emit logMessage("submitOracleResponse() begin");
         // CODE EXERCISE 3: Require that the response is being submitted for a request that is still open
         bytes32 key = keccak256(abi.encodePacked(index, flight, timestamp));
         require(
@@ -184,6 +190,7 @@ contract ExerciseC6D {
             // CODE EXERCISE 3: Announce to the world that verified flight status information is available
             emit FlightStatusInfo(flight, timestamp, statusId, false);
         }
+        emit logMessage("submitOracleResponse() end");
     }
 
     /************************************ END: Oracle Callback ************************************/
