@@ -1,4 +1,5 @@
 var Test = require('../config/testConfig.js');
+var truffleAssert = require('truffle-assertions');
 //var BigNumber = require('bignumber.js');
 
 contract('ExerciseC6D', async (accounts) => {
@@ -32,7 +33,16 @@ contract('ExerciseC6D', async (accounts) => {
 
     // ACT
     for (let a = 1; a < TEST_ORACLES_COUNT; a++) {
-      await config.exerciseC6D.registerOracle({ from: accounts[a], value: fee });
+      // for (let a = 1; a < 2; a++) {
+      let result1 = await config.exerciseC6D.registerOracle({ from: accounts[a], value: fee });
+      truffleAssert.eventEmitted(
+        result1,
+        'logMessage', (ev) => {
+          // console.log('ev:', ev);
+          // console.log('ev.message:', ev.message);
+          // console.log('ev.Result.message:', ev.Result.message);
+          return ev.message === 'registerOracle() begin';
+        });
       let result = await config.exerciseC6D.getOracle(accounts[a]);
       console.log(`oracle registered[${a}]: ${result[0]}, ${result[1]}, ${result[2]}`);
     }
@@ -45,7 +55,15 @@ contract('ExerciseC6D', async (accounts) => {
     let timestamp = Math.floor(Date.now() / 1000);
 
     // Submit a request for oracles to get status information for a flight
-    await config.exerciseC6D.fetchFlightStatus(flight, timestamp);
+    let result1 = await config.exerciseC6D.fetchFlightStatus(flight, timestamp);
+    truffleAssert.eventEmitted(
+      result1,
+      'OracleRequest', (ev) => {
+        console.log('index:', ev['0'].toNumber());
+        // console.log('ev.message:', ev.message);
+        // console.log('ev.Result.message:', ev.Result.message);
+        return ev['1'] === flight;
+      });
 
     // ACT
 
@@ -64,17 +82,27 @@ contract('ExerciseC6D', async (accounts) => {
 
         try {
           // Submit a response...it will only be accepted if there is an Index match
-          await config.exerciseC6D.submitOracleResponse(oracleIndexes[idx], flight, timestamp, 10, { from: accounts[a] });
+          let result = await config.exerciseC6D.submitOracleResponse(oracleIndexes[idx], flight, timestamp, 10, { from: accounts[a] });
+          truffleAssert.eventEmitted(
+            result,
+            'FlightStatusInfo', (ev) => {
+              console.log(`status: ${ev[2].toNumber()}, verified: ${ev[3]}`);
+              // console.log('ev.message:', ev.message);
+              // console.log('ev.Result.message:', ev.Result.message);
+              return true;
+            });
           console.log(`submitOracleResponse: ${oracleIndexes[idx]}, ${flight}, ${timestamp}, 10, from: ${accounts[a]}`);
           // Check to see if flight status is available
           // Only useful while debugging since flight status is not hydrated until a 
           // required threshold of oracles submit a response
           let flightStatus = await config.exerciseC6D.viewFlightStatus(flight, timestamp);
-          console.log('POST:', idx, oracleIndexes[idx].toNumber(), flight, timestamp, flightStatus.toNumber());
+          console.log('flightStatus:', flightStatus);
+          console.log(`POST : oracleIndexes[${a}][${idx}]:${oracleIndexes[idx].toNumber()}, flight:${flight}, timestamp:${timestamp}, flightStatus:${flightStatus.toNumber()}`);
         }
         catch (e) {
           // Enable this when debugging
-          console.log('ERROR:', idx, oracleIndexes[idx].toNumber(), flight, timestamp);
+          console.log(`ERROR: oracleIndexes[${a}][${idx}]: ${oracleIndexes[idx].toNumber()}, flight:${flight}, timestamp:${timestamp}, ERROR: ${e.reason}\n`, e);
+          // console.log(e);
         }
       }
     }
